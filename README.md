@@ -32,12 +32,6 @@ confirm ?
     miniForm ? <MiniForm/> : <OtherForm/>
 ```
 
-## Commented code is used only for explanation.
-Delete the code, do not comment out blocks of code. If we need it for some reason later on it is in the git history.
-
-## Don't leave any console objects in production
-Always delete `console.log` or similar code used for testing before merging
-
 ## Prefer if/return over if/else in functions
 If your function only has two return possibilities, and one is conditional, then you do not need the `else { }` block around your non-conditional return. Make that return your default, and include an `if` condition before
 ```javascript
@@ -140,3 +134,10 @@ const hero = true;
 function A();
 function B();
 ```
+
+## Commented code is used only for explanation.
+Delete the code, do not comment out blocks of code. If we need it for some reason later on it is in the git history.
+
+## Don't leave any console objects in production
+Always delete `console.log` or similar code used for testing before merging
+
