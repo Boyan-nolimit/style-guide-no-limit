@@ -6,10 +6,10 @@ Boolean variables/constants must start with **is** or **has**
 Names must be short and affirmative(non-negative).
 
 ```javascript
-//good
+// good
 const isPaidFor = true;
 
-//bad
+// bad
 const areBillsPaidFor = true;
 ```
 
@@ -18,14 +18,14 @@ Nested ternaries make code unreadable.
 Prefer to use an if statement and extract the code in a separate function.
 
 ```javascript
-//good
+// good
 if(confirm) {
     <ConfirmationPopup />
 } else {
     miniForm ? <MiniForm/> : <OtherForm/>
 }
 
-//bad
+// bad
 confirm ?
     <ConfirmationPopup />
     :
@@ -41,7 +41,7 @@ Always delete `console.log` or similar code used for testing before merging
 ## Prefer if/return over if/else in functions
 If your function only has two return possibilities, and one is conditional, then you do not need the `else { }` block around your non-conditional return. Make that return your default, and include an `if` condition before
 ```javascript
-//good
+// good
 function sayHello(name) {
   if(name.length > 10) {
      return "Wow ${name}, you have a very long name."
@@ -49,7 +49,7 @@ function sayHello(name) {
   return "Hello, ${name}!"
 }
 
-//bad
+// bad
 function sayHello(name) {
   if(name.length > 10) {
      return "Wow ${name}, you have a very long name."
@@ -62,11 +62,11 @@ function sayHello(name) {
 ## Prefer using constants over long prop values
 Long prop values should be stored in a constant outside of the component.
 ```javascript
-//good
+// good
 const initialValues = {email: '', firstName: '', lastName: '', commentBox: ''}
 <Formik initialValues={{...initialValues}}>
 
-//bad
+// bad
 <Formik
   initialValues={{
     email: '',
@@ -80,12 +80,12 @@ const initialValues = {email: '', firstName: '', lastName: '', commentBox: ''}
 ## Prefer if statements over && in functions 
 If it is not a conditional statement don't treat it like one. Prefer if statement since we are not assigning values and it is clearer what is executed in the block.
 ```javascript
-//good
+// good
 if (hero){
     window.scroll({ top: hero.offsetTop, behavior: 'smooth' });
 }
 
-//bad
+// bad
 hero &&
     window.scroll({ top: hero.offsetTop, behavior: 'smooth' });
 ```
@@ -98,7 +98,7 @@ const name = hero && "Superman";
 ## Destrucutre objects where appropirate
 If an object has multiple fields that you use in the same place than prefer to desctructure them instead of using dot notation to access an object's attributes.
 ```javascript
-//good
+// good
 const {linksFirstCol, linksSecondCol, linksThirdCol} = navItem;
 
 linksFirstCol.map((link) => ())
@@ -109,4 +109,34 @@ linksThirdCol.map((link) => ())
 navItem.linksFirstCol.map((link) => ())
 navItem.linksSecondCol.map((link) => ())
 navItem.linksThirdCol.map((link) => ())
+```
+
+## Use find instead of looping through an array
+Don't try to reinvent the wheel. `find` is much more consise and more readble.
+```javascript
+// good
+imageLinks.find((imageLink) => imageLink.region === region) || imageLinks[0]
+
+// bad
+imageLinks.forEach((imageLink) => {
+  if (imageLink.region === region) {
+    activeImageLink = imageLink;
+  }
+});
+```
+
+## Let your code breathe
+Add space between distinct code blocks and functions
+```javascript
+// good
+const hero = true;
+
+function A();
+
+function B();
+
+//bad
+const hero = true;
+function A();
+function B();
 ```
